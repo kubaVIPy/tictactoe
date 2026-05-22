@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="cs">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Piškvorky – Pravidla</title>
+        <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <nav>
+            <a href="index.html">🎮 Hra</a>
+            <a href="leaderboard.html">🏆 Historie</a>
+            <a href="rules.html" class="active">📖 Pravidla</a>
+        </nav>
+
+        <main>
+            <h1>Pravidla hry</h1>
+            <p class="subtitle">Jak se hrají Piškvorky (3×3)</p>
+
+            <div class="rules-card">
+                <h3>🎯 Cíl hry</h3>
+                <p>
+                    Umísti jako první tři své symboly do jedné řady – vodorovně,
+                    svisle nebo diagonálně.
+                </p>
+
+                <h3>👾 Hráči</h3>
+                <ul>
+                    <li>
+                        Hráč <span class="x-color">X</span> – vždy začíná jako
+                        první.
+                    </li>
+                    <li>
+                        Hráč <span class="o-color">O</span> – táhne jako druhý
+                        (nebo počítač v AI módu).
+                    </li>
+                </ul>
+
+                <h3>🕹️ Průběh hry</h3>
+                <ul>
+                    <li>
+                        Hráči střídavě klikají na prázdná políčka 3×3 mřížky.
+                    </li>
+                    <li>Políčko obsazené soupeřem nelze přepsat.</li>
+                    <li>
+                        Hra skončí výhrou jednoho hráče, nebo remízou (plná
+                        mřížka bez vítěze).
+                    </li>
+                </ul>
+
+                <h3>🤖 Počítač (AI mód)</h3>
+                <ul>
+                    <li>AI se pokusí vyhrát, pokud má příležitost.</li>
+                    <li>Jinak zablokuje hráče, když hrozí prohrou.</li>
+                    <li>
+                        Pokud žádná taková situace nenastane, vybere náhodné
+                        políčko.
+                    </li>
+                </ul>
+
+                <h3>🏆 Skóre</h3>
+                <ul>
+                    <li>
+                        Skóre se počítá po celou relaci (nová hra ho resetuje).
+                    </li>
+                    <li>Každý odehraný zápas se uloží do Historie výsledků.</li>
+                    <li>
+                        Historie je uložena lokálně v prohlížeči a přetrvá i po
+                        zavření záložky.
+                    </li>
+                </ul>
+
+                <h3>⌨️ Ovládání</h3>
+                <ul>
+                    <li>Kliknutím na políčko umístíš svůj symbol.</li>
+                    <li>Nové kolo – zachová skóre, resetuje mřížku.</li>
+                    <li>
+                        Nová hra – vrátí zpět do nastavení a resetuje skóre.
+                    </li>
+                </ul>
+            </div>
+        </main>
+
+        <footer>Piškvorky - Kafka</footer>
+    </body>
+</html>

@@ -1,0 +1,350 @@
+/* ============================
+   style.css – Piškvorky 2026
+   ============================ */
+
+:root {
+    --bg: #1a1a2e;
+    --surface: #16213e;
+    --primary: #0f3460;
+    --accent: #e94560;
+    --blue: #00b4d8;
+    --text: #eaeaea;
+    --muted: #888;
+    --radius: 10px;
+}
+
+/* ── Reset ── */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(
+        90deg,
+        hsla(296, 77%, 39%, 1) 5%,
+        hsla(46, 100%, 51%, 1) 97%
+    );
+    color: var(--text);
+    font-family: "Segoe UI", Tahoma, sans-serif;
+    min-height: 100vh;
+}
+
+/* ── Navigace ── */
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1rem;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.45rem 1.2rem;
+    border-radius: var(--radius);
+    transition: background 0.2s;
+    font-size: 0.95rem;
+}
+
+nav a:hover,
+nav a.active {
+    background: var(--accent);
+}
+
+/* ── Hlavní obsah ── */
+main {
+    max-width: 640px;
+    margin: 2rem auto;
+    padding: 1rem;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.4rem;
+    color: black;
+    margin-bottom: 0.3rem;
+}
+
+.subtitle {
+    color: black;
+    margin-bottom: 1.8rem;
+    font-size: 0.95rem;
+}
+
+h2 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+}
+
+/* ── Nastavení hry ── */
+.setup {
+    background: var(--surface);
+    padding: 1.6rem;
+    border-radius: 14px;
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.form-row {
+    margin-bottom: 1rem;
+}
+
+.form-row label {
+    display: block;
+    margin-bottom: 0.3rem;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.form-row input,
+.form-row select {
+    width: 100%;
+    padding: 0.6rem 0.9rem;
+    background: var(--primary);
+    border: 2px solid transparent;
+    border-radius: 8px;
+    color: var(--text);
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.form-row input:focus,
+.form-row select:focus {
+    border-color: var(--accent);
+}
+
+.form-row input.invalid {
+    border-color: var(--accent);
+}
+
+.hint {
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-top: 0.25rem;
+}
+
+/* ── Tlačítka ── */
+.btn {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 0.7rem 2rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition:
+        opacity 0.2s,
+        transform 0.1s;
+    font-weight: 600;
+}
+
+.btn:hover {
+    opacity: 0.85;
+}
+.btn:active {
+    transform: scale(0.97);
+}
+
+.btn-sm {
+    padding: 0.45rem 1.1rem;
+    font-size: 0.88rem;
+}
+
+.btn-ghost {
+    background: var(--primary);
+}
+
+/* ── Chybové hlášení ── */
+.error {
+    color: var(--accent);
+    font-size: 0.88rem;
+    margin-top: 0.5rem;
+    min-height: 1.2rem;
+}
+
+/* ── Herní plocha ── */
+#game-area {
+    display: none;
+}
+
+#status {
+    font-size: 1.15rem;
+    min-height: 1.8rem;
+    margin: 0.8rem 0;
+    color: var(--blue);
+    font-weight: 600;
+}
+
+/* ── Hrací mřížka ── */
+#board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 1rem auto;
+    max-width: 300px;
+}
+
+.cell {
+    background: var(--surface);
+    border: 2px solid var(--primary);
+    border-radius: 12px;
+    aspect-ratio: 1;
+    font-size: 2.8rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition:
+        background 0.15s,
+        transform 0.1s;
+    user-select: none;
+}
+
+.cell:hover {
+    background: var(--primary);
+}
+.cell:active {
+    transform: scale(0.93);
+}
+.cell.x {
+    color: var(--accent);
+}
+.cell.o {
+    color: yellow;
+}
+.cell.winner {
+    background: darkslateblue; /* Light yellow */
+    border-color: gold;
+}
+.cell.taken {
+    cursor: default;
+}
+
+/* ── Skóre ── */
+.scoreboard {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1.2rem 0;
+}
+
+.score-box {
+    background: var(--surface);
+    padding: 0.7rem 1.2rem;
+    border-radius: 10px;
+    min-width: 80px;
+}
+
+.score-box .sname {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-bottom: 0.2rem;
+}
+.score-box .snum {
+    font-size: 1.9rem;
+    font-weight: bold;
+}
+.score-box.x-box .snum {
+    color: var(--accent);
+}
+.score-box.o-box .snum {
+    color: var(--blue);
+}
+
+.game-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+/* ── Historie / tabulka ── */
+.table-wrap {
+    background: var(--surface);
+    border-radius: 14px;
+    overflow: hidden;
+    margin-top: 1rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 0.65rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--primary);
+}
+
+th {
+    color: var(--muted);
+    font-size: 0.85rem;
+    font-weight: 600;
+    background: var(--primary);
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+tr:hover td {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.x-color {
+    color: var(--accent);
+    font-weight: 600;
+}
+.o-color {
+    color: var(--blue);
+    font-weight: 600;
+}
+
+.empty-msg {
+    color: var(--muted);
+    padding: 2rem;
+    font-size: 0.95rem;
+}
+
+/* ── Pravidla ── */
+.rules-card {
+    background: var(--surface);
+    border-radius: 14px;
+    padding: 2rem;
+    text-align: left;
+    line-height: 1.7;
+}
+
+.rules-card h3 {
+    color: var(--accent);
+    margin: 1.3rem 0 0.4rem;
+    font-size: 1.05rem;
+}
+
+.rules-card h3:first-child {
+    margin-top: 0;
+}
+
+.rules-card ul {
+    padding-left: 1.4rem;
+}
+
+.rules-card li {
+    margin-bottom: 0.3rem;
+}
+
+/* ── Footer ── */
+footer {
+    text-align: center;
+    color: black;
+    font-size: 0.8rem;
+    padding: 2rem 1rem 1rem;
+}

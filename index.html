@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="cs">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Piškvorky – Hra</title>
+        <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <nav>
+            <a href="index.html" class="active">🎮 Hra</a>
+            <a href="leaderboard.html">🏆 Historie</a>
+            <a href="rules.html">📖 Pravidla</a>
+        </nav>
+
+        <main>
+            <h1>Piškvorky</h1>
+            <p class="subtitle">Klasická hra pro 1–2 hráče</p>
+
+            <!-- ── Nastavení ── -->
+            <section class="setup" id="setup">
+                <div class="form-row">
+                    <label for="mode">Herní mód</label>
+                    <select id="mode" onchange="toggleP2(this)">
+                        <option value="pvp">Hráč vs Hráč</option>
+                        <option value="ai">Hráč vs Počítač</option>
+                    </select>
+                </div>
+
+                <div class="form-row">
+                    <label for="p1">Jméno hráče 1 (X)</label>
+                    <input
+                        type="text"
+                        id="p1"
+                        maxlength="20"
+                        placeholder="Např. Jana"
+                        oninput="validateName(this, 'err-p1')"
+                    />
+                    <div class="error" id="err-p1"></div>
+                </div>
+
+                <div class="form-row" id="p2-row">
+                    <label for="p2">Jméno hráče 2 (O)</label>
+                    <input
+                        type="text"
+                        id="p2"
+                        maxlength="20"
+                        placeholder="Např. Petr"
+                        oninput="validateName(this, 'err-p2')"
+                    />
+                    <div class="error" id="err-p2"></div>
+                </div>
+
+                <p class="error" id="error"></p>
+
+                <button class="btn" id="start-btn" onclick="startGame()">
+                    Spustit hru
+                </button>
+            </section>
+
+            <!-- ── Hrací plocha ── -->
+            <section id="game-area">
+                <div id="status">Připravuji hru…</div>
+
+                <div id="board">
+                    <div class="cell" onclick="handleClick(0)"></div>
+                    <div class="cell" onclick="handleClick(1)"></div>
+                    <div class="cell" onclick="handleClick(2)"></div>
+                    <div class="cell" onclick="handleClick(3)"></div>
+                    <div class="cell" onclick="handleClick(4)"></div>
+                    <div class="cell" onclick="handleClick(5)"></div>
+                    <div class="cell" onclick="handleClick(6)"></div>
+                    <div class="cell" onclick="handleClick(7)"></div>
+                    <div class="cell" onclick="handleClick(8)"></div>
+                </div>
+
+                <div class="scoreboard">
+                    <div class="score-box x-box">
+                        <div class="sname" id="score-name-x">Hráč 1</div>
+                        <div class="snum" id="score-x">0</div>
+                    </div>
+                    <div class="score-box">
+                        <div class="sname">Remízy</div>
+                        <div class="snum" id="score-d">0</div>
+                    </div>
+                    <div class="score-box o-box">
+                        <div class="sname" id="score-name-o">Hráč 2</div>
+                        <div class="snum" id="score-o">0</div>
+                    </div>
+                </div>
+
+                <div class="game-buttons">
+                    <button class="btn btn-ghost btn-sm" onclick="resetRound()">
+                        🔄 Nové kolo
+                    </button>
+                    <button class="btn btn-sm" onclick="newGame()">
+                        🏠 Nová hra
+                    </button>
+                </div>
+            </section>
+        </main>
+
+        <footer>Piškvorky - Kafka</footer>
+
+        <script src="game.js"></script>
+    </body>
+</html>
