@@ -20,13 +20,7 @@ Ostatní soubory:
   favicon.svg      – ikona stránky
 
 URL aplikace:
-  /////////////////////////////////////////////////////////////////////////////////////////////////////
-
-Nasazení (GitHub Pages):
-  1. Vytvoř repozitář na github.com (název: piskvorky)
-  2. Nahraj všechny soubory do kořene repozitáře
-  3. Settings → Pages → Branch: main → Save
-  4. Po ~1 minutě bude dostupná URL výše
+ https://kubavipy.github.io/tictactoe/
 
 Validace:
   HTML a CSS: https://validator.w3.org/
